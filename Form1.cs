@@ -12,13 +12,15 @@ namespace LoginScreen
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (txtID.Text == myID && txtPW.Text == myPW) // 로그인 성공 조건
+            string inputID = txtID.Text;
+            string inputPW = txtPW.Text;
+            if (inputID == myID && inputPW == myPW) // 로그인 성공 조건
             {
                 MessageBox.Show("로그인 성공!");
             }
             else
             {
-                MessageBox.Show("아이디 또는 비밀번호가 잘못되었습니다.");
+                MessageBox.Show("아이디 또는 비밀번호가 잘못되었습니다.", "로그인 오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -54,6 +56,7 @@ namespace LoginScreen
         {
             if (string.IsNullOrEmpty(txtPW.Text)) // 비밀번호 입력란이 비어있을 때
             {
+                btnLogin.Focus();
                 txtPW.UseSystemPasswordChar = false;
                 txtPW.Text = "비밀번호";
                 txtPW.ForeColor = Color.Silver;
