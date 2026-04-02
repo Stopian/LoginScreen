@@ -20,12 +20,13 @@ namespace LoginScreen
             }
             else
             {
-                MessageBox.Show("아이디 또는 비밀번호가 잘못되었습니다.", "로그인 오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lblErrorMsg.Visible = true; 
             }
         }
 
         private void txtID_Enter(object sender, EventArgs e)
         {
+            lblErrorMsg.Visible = false;
             if (txtID.Text == "아이디") // 아이디 입력란이 기본 텍스트일 때
             {
                 txtID.Text = "";
@@ -44,6 +45,7 @@ namespace LoginScreen
 
         private void txtPW_Enter(object sender, EventArgs e)
         {
+            lblErrorMsg.Visible = false;
             if (txtPW.Text == "비밀번호") // 비밀번호 입력란이 기본 텍스트일 때
             {
                 txtPW.Text = "";
@@ -77,6 +79,7 @@ namespace LoginScreen
             if ((e.KeyCode == Keys.Enter))
             {
                 e.SuppressKeyPress = true;
+                btnLogin.Focus();
                 btnLogin.PerformClick();
             }
         }
